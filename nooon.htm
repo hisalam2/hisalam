@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sister's Birthday Celebration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #0a192f;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .slideshow {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .slide {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+        .slide img,
+        .slide video {
+            width: 100%;
+            height: auto;
+        }
+        .controls {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .controls button {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            outline: none;
+            transition: color 0.3s ease;
+        }
+        .controls button:hover {
+            color: #FF69B4;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .animated-text {
+            font-size: 24px;
+            animation: fadeIn 2s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Birthday, saloom!</h1>
+        <p class="animated-text">Wishing you a day filled with joy and happiness!</p>
+        
+        <div class="slideshow">
+            <div class="slides">
+                <div class="slide">
+                    <img src="image1.jpg" alt="Image 1"></div>
+                    <div class="slide">
+                   <img src="image2.jpg" alt="Image 1"></div>
+                   <div class="slide">
+                   <img src="image3.jpg" alt="Image 1"></div>
+                </div>
+                <div class="slide">
+                    <video controls>
+                        <source src="vid1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="slide">
+                    <video controls>
+                        <source src="vid2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="slide">
+                    <video controls>
+                        <source src="vid3.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+
+                <!-- Add more images and videos as needed -->
+            </div>
+            <div class="controls">
+                <button onclick="prevSlide()">&#10094;</button>
+                <button onclick="nextSlide()">&#10095;</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+
+        function showSlide(n) {
+            const slides = document.getElementsByClassName("slide");
+            if (n >= slides.length) {
+                slideIndex = 0;
+            }
+            if (n < 0) {
+                slideIndex = slides.length - 1;
+            }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex].style.display = "block";
+        }
+
+        function nextSlide() {
+            showSlide(slideIndex += 1);
+        }
+
+        function prevSlide() {
+            showSlide(slideIndex -= 1);
+        }
+
+        showSlide(slideIndex);
+    </script>
+</body>
+</html>
